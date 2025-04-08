@@ -64,32 +64,12 @@ local function neotree_config()
 					{ "icon" },
 					-- Render the name of the file. --
 					{ "name" },
-					-- ... --
+					-- Render the locally modified (unwritten) file status. --
 					{ "modified" },
 					-- Render the git status of the file. --
 					{ "git_status" },
 				},
 			},
-		},
-
-		---- Define configuration specific to local filesystem Git status. ----
-		git_status = {
-			---- Define file tree symbols for the Git status of each file. ----
-			symbols = {
-				added = "+",
-				modified = "M",
-				deleted = "x",
-				renamed = "R",
-			},
-			-- Define window mappings for git source. --
-			-- window = {
-			--     mappings = {
-			--         -- Keymap to stage/unstage a file. --
-			--         ["s"] = "toggle_git_status",
-			--         -- Keymap to discard changes. --
-			--         ["D"] = "git_discard",
-			--     }
-			-- }
 		},
 
 		---- Define the file tree display configuration. ----
