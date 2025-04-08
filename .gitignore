@@ -1,0 +1,17 @@
+# Blacklist everything unless explicitly whitelisted.
+*
+
+# Explicitly whitelist these directories (and all of their contents).
+!lua/
+!lua/**
+
+# Explicitly whitelist these files.
+!README.md
+!.gitignore
+!init.lua
+!lazy-lock.json
+!README.md
+
+# Blacklist .DS_Store files in any whitelisted directories.
+**/.DS_Store
+
