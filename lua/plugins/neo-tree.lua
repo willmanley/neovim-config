@@ -36,12 +36,14 @@ local function neotree_config()
 				-- Make gitignored files visible. --
 				hide_gitignored = false,
 			},
+
 			-- Follow current file and reveal in tree on buffer change. --
 			follow_current_file = {
 				enabled = true,
 			},
 			-- Use libuv file watcher to detect changes. --
 			use_libuv_file_watcher = true,
+
 			-- Define window mappings for filesystem source. --
 			window = {
 				mappings = {
@@ -57,18 +59,99 @@ local function neotree_config()
 					--["c"] = "copy_to_clipboard",
 				},
 			},
-			-- Define what to render for each file in the tree. --
+
+			-- Define what to render (& the order) for files in the Neotree. --
 			renderers = {
 				file = {
+					-- Render the file modified status. --
+					{ "modified" },
+					-- Render the file diagnostic status. --
+					{ "diagnostics" },
 					-- Render an icon specific to the file type. --
 					{ "icon" },
 					-- Render the name of the file. --
 					{ "name" },
-					-- Render the locally modified (unwritten) file status. --
-					{ "modified" },
 					-- Render the git status of the file. --
 					{ "git_status" },
 				},
+			},
+		},
+
+		---- Define default components/icons to be displayed in NeoTree. ----
+		default_component_configs = {
+			-- Define the default file/directory name component config. --
+			name = {
+				-- Whether to pre-pend files and folder names with '/'s. --
+				trailing_slash = false,
+				-- Whether to color file name by their git status. --
+				use_git_status_colors = true,
+				highlight = "NeoTreeFileName",
+			},
+
+			-- Define the default file/folder icons to display. --
+			icon = {
+				folder_closed = "",
+				folder_open = "",
+				folder_empty = "",
+				folder_empty_open = "",
+				default = "",
+				highlight = "NeoTreeFileIcon",
+			},
+
+			-- Define the default file/folder diagnostic icons to display. --
+			diagnostics = {
+				symbols = {
+					hint = "💡",
+					info = "ℹ️",
+					warn = "⚠️",
+					error = "❌",
+				},
+				highlights = {
+					hint = "DiagnosticSignHint",
+					info = "DiagnosticSignInfo",
+					warn = "DiagnosticSignWarn",
+					error = "DiagnosticSignError",
+				},
+			},
+
+			-- Define the default locally modified (unwritten) file icon. --
+			modified = {
+				symbol = "*",
+				highlight = "NeoTreeModified",
+			},
+
+			-- Define the default Git status file icons to display. --
+			git_status = {
+				symbols = {
+					-- Git status = "added" symbol. --
+					added = "+",
+					-- Git status = "modified" symbol. --
+					modified = "~",
+					-- Git status = "deleted" symbol. --
+					deleted = "x",
+					-- Git status = "renamed" symbol. --
+					renamed = "»",
+					-- Git status = "untracked" symbol. --
+					untracked = "?",
+					-- Git status = "ignored" symbol. --
+					ignored = "◌",
+					-- Git status = "unstaged" symbol. --
+					unstaged = "!",
+					-- Git status = "staged" symbol. --
+					staged = "✓",
+					-- Git status = "merge conflict" symbol. --
+					conflict = "",
+				},
+			},
+
+			---- Define the tree indent markers to be used. -----
+			indent = {
+				indent_size = 2,
+				padding = 0,
+				with_markers = true,
+				indent_marker = "├",
+				last_indent_marker = "└",
+				highlight = "NeoTreeIndentMarker",
 			},
 		},
 
