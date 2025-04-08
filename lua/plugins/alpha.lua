@@ -17,11 +17,18 @@ local function alpha_config()
 
 	---- Configure start screen buttons. ----
 	dashboard.section.buttons.val = {
-		dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-		dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
-		dashboard.button("r", "  Recent files", ":Telescope oldfiles<CR>"),
-		dashboard.button("c", "  Configuration", ":e $MYVIMRC<CR>"),
-		dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+		-- Create a startup shortcut to jump straight to my portfolio. --
+		dashboard.button(
+			"p",
+			"💼  Teleport to your Portfolio Project.",
+			":cd /Users/willmanley/IdeaProjects/portfolio | Neotree<CR>"
+		),
+		dashboard.button(
+			"c",
+			"⚙️  Teleport to your NeoVim configuration.",
+			":cd /Users/willmanley/.config/nvim/ | Neotree<CR>"
+		),
+		dashboard.button("q", "👋  Quit Neovim", ":qa<CR>"),
 	}
 
 	---- Configure start screen footer ----
@@ -37,6 +44,10 @@ return {
 	"goolord/alpha-nvim",
 	-- Define event to trigger the plugin (Vim startup w/out file opened). ----
 	event = "VimEnter",
+	-- Define the plugin dependencies. ----
+	dependencies = {
+		"nvim-neo-tree/neo-tree.nvim",
+	},
 	-- Define the plugin-specific configuration. ----
 	config = alpha_config,
 }
