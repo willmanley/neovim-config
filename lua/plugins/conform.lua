@@ -44,11 +44,14 @@ local function conform_config()
 			enabled = true,
 			timeout_ms = 500,
 			-- lsp_fallback = true,
-        },
+		},
 	})
 	---- Create a custom keypmap for manual formatting. ----
 	vim.keymap.set("n", "<leader>fm", function()
-		conform.format({ async = true, lsp_fallback = true })
+		conform.format({
+			async = true,
+			-- lsp_fallback = true
+		})
 	end, { desc = "Format document" })
 end
 
