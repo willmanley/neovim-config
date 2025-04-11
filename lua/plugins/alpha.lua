@@ -21,7 +21,7 @@ local function alpha_config()
 		dashboard.button(
 			"p",
 			"💼  Teleport to your Portfolio Project.",
-			":cd /Users/willmanley/IdeaProjects/portfolio | Neotree<CR>"
+			":cd /Users/willmanley/Desktop/projects/portfolio/ | Neotree<CR>"
 		),
 		dashboard.button(
 			"c",

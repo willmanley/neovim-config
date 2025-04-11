@@ -3,16 +3,16 @@
 local function lspconfig_config()
 	---- Configure Mason for LSP server management ----
 	require("mason").setup()
-	require("mason-lspconfig").setup({
-		-- Define language servers to automatically install --
-		ensure_installed = {
-			"lua_ls",
-			"pyright",
-			"rust_analyzer",
-		},
-		-- Enable automatic installation of servers --
-		automatic_installation = true,
-	})
+	-- require("mason-lspconfig").setup({
+	-- 	-- Define language servers to automatically install --
+	-- 	ensure_installed = {
+	-- 		"lua_ls",
+	-- 		"pyright",
+	-- 		"rust_analyzer",
+	-- 	},
+	-- 	-- Enable automatic installation of servers --
+	-- 	automatic_installation = true,
+	-- })
 
 	---- Configure diagnostic display settings ----
 	vim.diagnostic.config({
@@ -109,15 +109,37 @@ local function lspconfig_config()
 	})
 
 	---- Configure all other language servers automatically. ----
-	require("mason-lspconfig").setup_handlers({
-		function(server_name)
-			if server_name ~= "lua_ls" then
-				require("lspconfig")[server_name].setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-				})
-			end
-		end,
+	-- require("mason-lspconfig").setup_handlers({
+	-- 	function(server_name)
+	-- 		if server_name ~= "lua_ls" then
+	-- 			require("lspconfig")[server_name].setup({
+	-- 				on_attach = on_attach,
+	-- 				capabilities = capabilities,
+	-- 			})
+	-- 		end
+	-- 	end,
+	-- })
+	---- Configure all other language servers automatically. ----
+	require("mason-lspconfig").setup({
+		-- Define language servers to automatically install --
+		ensure_installed = {
+			"lua_ls",
+			"pyright",
+			"rust_analyzer",
+		},
+		-- Enable automatic installation of servers --
+		automatic_installation = true,
+		-- Define handlers for server setup --
+		handlers = {
+			function(server_name)
+				if server_name ~= "lua_ls" then
+					require("lspconfig")[server_name].setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+					})
+				end
+			end,
+		},
 	})
 end
 

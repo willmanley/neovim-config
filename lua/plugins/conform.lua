@@ -8,7 +8,7 @@ local function conform_config()
 			-- Install Stylua for Lua formatting.
 			"stylua",
 			-- Install ISort for Python import formatting.
-			"isort",
+			-- "isort",
 			-- Install ruff for Python style formatting.
 			"ruff",
 			-- Install prerrier for JS/CSS/HTML, etc. formatting.
@@ -24,7 +24,10 @@ local function conform_config()
 		---- Point conform to the formatter(s) to use for each file type. ----
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "isort", "ruff_format" },
+			python = {
+				-- "isort",
+				"ruff_format",
+			},
 			javascript = { "prettier" },
 			typescript = { "prettier" },
 			css = { "prettier" },
@@ -36,7 +39,7 @@ local function conform_config()
 		---- Formatter-specific custom configurations. ----
 		formatters = {
 			stylua = { prepend_args = { "--column-width", "80" } },
-			isort = { prepend_args = { "--line-length", "80" } },
+			--[[ 			isort = { prepend_args = { "--line-length", "80" } }, ]]
 			ruff_format = { prepend_args = { "format", "--line-length", "80" } },
 		},
 		-- Enable formatting on buffer writing. --
