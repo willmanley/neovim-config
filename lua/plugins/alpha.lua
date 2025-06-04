@@ -23,6 +23,13 @@ local function alpha_config()
 			"💼  Teleport to your Portfolio Project.",
 			":cd /Users/willmanley/Desktop/projects/portfolio/ | Neotree<CR>"
 		),
+		-- Create a startup shortcut to jump straight to Expedite project. --
+		dashboard.button(
+			"x",
+			"🩻  Teleport to your Expedite Project.",
+			":cd /Users/willmanley/Desktop/projects/expedite/ | Neotree<CR>"
+		),
+		-- Create a startup shortcut to jump straight to my NeoVim config. --
 		dashboard.button(
 			"c",
 			"⚙️  Teleport to your NeoVim configuration.",

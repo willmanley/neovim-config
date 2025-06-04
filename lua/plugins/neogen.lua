@@ -13,6 +13,8 @@ local function neogen_config()
 			python = {
 				template = {
 					annotation_convention = "google_docstrings",
+					-- 👇 Add this to force docstring placement inside the function
+					location = "after",
 				},
 			},
 			-- Configure LuaDoc docstrings for Lua. --

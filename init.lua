@@ -14,6 +14,9 @@ vim.opt.shiftwidth = 4
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Map all yanks to clipboard. --
+vim.api.nvim_set_option("clipboard", "unnamed")
+
 ---- Load all NeoVim plugins & their configurations. ----
 -- Load Lazy to manage all NeoVim plugins. --
 require("config.lazy")
